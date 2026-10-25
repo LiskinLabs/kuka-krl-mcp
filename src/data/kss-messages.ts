@@ -1,0 +1,286 @@
+import { Locale } from "../types.js";
+
+export interface KssMessageDoc {
+  id: number;
+  text: Record<Locale, string>;
+  cause: Record<Locale, string>;
+  remedy: Record<Locale, string>;
+}
+
+export const KSS_MESSAGES_CATALOG: KssMessageDoc[] = [
+  {
+    id: 1,
+    text: {
+      en: "EMERGENCY STOP",
+      ru: "АВАРИЙНЫЙ ОСТАНОВ (E-STOP)",
+      de: "NOT-HALT",
+      es: "PARADA DE EMERGENCIA",
+      it: "ARRESTO D'EMERGENZA",
+      tr: "ACIL STOP",
+    },
+    cause: {
+      en: "Emergency stop button on SmartPAD or external safety circuit triggered.",
+      ru: "Нажата кнопка аварийного останова на пульте SmartPAD или сработал внешний контур безопасности.",
+      de: "NOT-HALT-Taster am SmartPAD oder externer Sicherheitskreis ausgeloest.",
+      es: "Boton de parada de emergencia accionado en el SmartPAD o circuito de seguridad externo.",
+      it: "Pulsante di arresto d'emergenza premuto sullo SmartPAD o circuito esterno intervenuto.",
+      tr: "SmartPAD veya harici guvenlik devresindeki Acil Stop butonuna basıldı.",
+    },
+    remedy: {
+      en: "Unlock the emergency stop button and acknowledge the safety circuit on SmartPAD.",
+      ru: "Разблокируйте кнопку аварийного останова (поверните) и подтвердите сообщение на SmartPAD.",
+      de: "NOT-HALT-Taster entriegeln und Meldung am SmartPAD quittieren.",
+      es: "Desbloquee la seta de emergencia y confirme el mensaje en el SmartPAD.",
+      it: "Sbloccare il pulsante di emergenza e confermare il messaggio sullo SmartPAD.",
+      tr: "Acil stop butonunu cevirerek acın ve SmartPAD uzerinden onaylayın.",
+    },
+  },
+  {
+    id: 14,
+    text: {
+      en: "SoftPLC: {0}",
+      ru: "SoftPLC: {0}",
+      de: "SoftPLC: {0}",
+      es: "SoftPLC: {0}",
+      it: "SoftPLC: {0}",
+      tr: "SoftPLC: {0}",
+    },
+    cause: {
+      en: "Internal ProConOS / Multiprog PLC runtime emitted an exception or cycle timeout.",
+      ru: "Встроенный контроллер SoftPLC (ProConOS) сообщил об ошибке или превышении времени цикла.",
+      de: "SoftPLC-Laufzeitsystem hat eine Ausnahme oder Zykluszeitueberschreitung gemeldet.",
+      es: "El sistema SoftPLC ha emitido una excepcion o desbordamiento de ciclo.",
+      it: "Il runtime SoftPLC ha generato un'eccezione o timeout di ciclo.",
+      tr: "Dahili SoftPLC dongu zaman asımı veya istisna olusturdu.",
+    },
+    remedy: {
+      en: "Inspect SoftPLC diagnostic buffer in WorkVisual or KRC log viewer.",
+      ru: "Проверьте диагностический буфер SoftPLC в WorkVisual или журнале ошибок KRC.",
+      de: "SoftPLC-Diagnosepuffer in WorkVisual pruefen.",
+      es: "Inspeccione el bufer de diagnostico de SoftPLC en WorkVisual.",
+      it: "Verificare il buffer diagnostico di SoftPLC in WorkVisual.",
+      tr: "WorkVisual icindeki SoftPLC diagnostik tamponunu kontrol edin.",
+    },
+  },
+  {
+    id: 20,
+    text: {
+      en: "External EMERGENCY STOP",
+      ru: "Внешний аварийный останов (External E-STOP)",
+      de: "Externer NOT-HALT",
+      es: "PARADA DE EMERGENCIA externa",
+      it: "ARRESTO D'EMERGENZA esterno",
+      tr: "Harici ACIL STOP",
+    },
+    cause: {
+      en: "Safety interface X11, CIP Safety, or PROFIsafe reported external emergency stop channel open.",
+      ru: "Интерфейс безопасности X11, CIP Safety или PROFIsafe зафиксировал размыкание внешнего канала E-STOP.",
+      de: "Sicherheitschnittstelle X11, CIP Safety oder PROFIsafe meldet offenen NOT-HALT-Kanal.",
+      es: "La interfaz de seguridad X11 o bus seguro reporta canal de parada externo abierto.",
+      it: "L'interfaccia di sicurezza X11 o bus di sicurezza segnala canale aperto.",
+      tr: "Guvenlik arayuzu (X11 / PROFIsafe / CIP Safety) harici acil stop kanalının acık oldugunu bildirdi.",
+    },
+    remedy: {
+      en: "Check cell fence gates, peripheral emergency stop pushbuttons, and safety PLC feedback.",
+      ru: "Проверьте калитки ограждения ячейки, кнопки E-STOP на периферии и состояние выходов safety ПЛК.",
+      de: "Schutztueren, externe NOT-HALT-Taster und Sicherheits-SPS pruefen.",
+      es: "Compruebe las puertas del vallado, setas externas y estado del PLC de seguridad.",
+      it: "Controllare i ripari della cella, i pulsanti esterni e le uscite del PLC di sicurezza.",
+      tr: "Hucre kapılarını, harici butonları ve emniyet PLC sinyallerini kontrol edin.",
+    },
+  },
+  {
+    id: 67,
+    text: {
+      en: "Acknowledge operator safety",
+      ru: "Подтвердите безопасность оператора (Acknowledge operator safety)",
+      de: "Bedienersicherheit quittieren",
+      es: "Confirmar seguridad de operario",
+      it: "Confermare sicurezza operatore",
+      tr: "Operator guvenligini onaylayın",
+    },
+    cause: {
+      en: "Safety gate was opened and closed in automatic mode (AUT/EXT). Drives cannot be powered until acknowledged.",
+      ru: "Защитная дверь была открыта и закрыта в автоматическом режиме. Приводы заблокированы до подтверждения.",
+      de: "Schutztuer wurde im Automatikbetrieb geoeffnet und geschlossen.",
+      es: "Se ha abierto y cerrado una puerta de seguridad en modo automatico.",
+      it: "Un riparo di sicurezza e stato aperto e richiuso in modalita automatica.",
+      tr: "Otomatik modda guvenlik kapısı acılıp kapandı. Onaylanana kadar tahrikler acılamaz.",
+    },
+    remedy: {
+      en: "Ensure all personnel have exited the robot cell, press safety reset button on cell panel, acknowledge message on SmartPAD.",
+      ru: "Убедитесь, что внутри ячейки нет людей, нажмите внешнюю кнопку сброса безопасности (Reset) и подтвердите сообщение на SmartPAD.",
+      de: "Sicherstellen, dass sich niemand in der Zelle befindet, Quittiertaster an der Zelle druecken, Meldung am SmartPAD quittieren.",
+      es: "Asegurese de que la celda este vacia, pulse el rearme externo y confirme el mensaje en el SmartPAD.",
+      it: "Accertarsi che la cella sia sgombra, premere il reset esterno e confermare il messaggio sullo SmartPAD.",
+      tr: "Hucre icinde kimse olmadıgından emin olun, harici reset butonuna basın ve SmartPAD uzerinden onaylayın.",
+    },
+  },
+  {
+    id: 68,
+    text: {
+      en: "No motion enable present",
+      ru: "Отсутствует разрешение движения ($MOVE_ENABLE = FALSE)",
+      de: "Keine Antriebe-/Fahrfreigabe vorhanden",
+      es: "Falta permiso de movimiento ($MOVE_ENABLE)",
+      it: "Nessun consenso al movimento ($MOVE_ENABLE)",
+      tr: "Hareket izni yok ($MOVE_ENABLE = FALSE)",
+    },
+    cause: {
+      en: "Fieldbus signal $MOVE_ENABLE is FALSE or drives enable handshake is missing from the master PLC.",
+      ru: "Сигнал $MOVE_ENABLE равен FALSE или главный ПЛК не выдал разрешение движения робота.",
+      de: "Eingang $MOVE_ENABLE ist FALSE oder Freigabe der SPS fehlt.",
+      es: "La senal $MOVE_ENABLE es FALSE o falta el permiso desde el PLC maestro.",
+      it: "Il segnale $MOVE_ENABLE e FALSE o manca il consenso dal PLC.",
+      tr: "$MOVE_ENABLE girisi FALSE veya ana PLC'den hareket izni gelmiyor.",
+    },
+    remedy: {
+      en: "Check PLC handshake in Auto External mode. Ensure $MOVE_ENABLE is set to TRUE by the PLC.",
+      ru: "Проверьте дискретный обмен с ПЛК в режиме EXT. Убедитесь, что ПЛК выставляет $MOVE_ENABLE = TRUE.",
+      de: "SPS-Handshake im Automatik-Extern-Betrieb pruefen ($MOVE_ENABLE = TRUE).",
+      es: "Compruebe las senales del PLC en modo Automatico Externo.",
+      it: "Verificare i segnali del PLC in modalita Automatico Esterno.",
+      tr: "Otomatik Harici modda PLC ile iletisimi kontrol edin, $MOVE_ENABLE sinyalinin TRUE yapıldıgından emin olun.",
+    },
+  },
+  {
+    id: 71,
+    text: {
+      en: "No access to RDC data",
+      ru: "Нет доступа к данным RDC (Resolver Digital Converter)",
+      de: "Kein Zugriff auf RDC-Daten",
+      es: "Sin acceso a los datos de la RDC",
+      it: "Nessun accesso ai dati RDC",
+      tr: "RDC (Resolver Digital Converter) verilerine erisilemiyor",
+    },
+    cause: {
+      en: "Communication failure between KPC motherboard and robot base RDC box (Ethernet cable X21/X31 or 24V power missing).",
+      ru: "Потеря связи между промышленным ПК (KPC) и блоком RDC в основании робота (обрыв кабеля X21/X31 или сбой питания 24В).",
+      de: "Kommunikationsfehler zwischen Steuerungs-PC und RDC-Box am Roboterfuss (Leitung X21/X31).",
+      es: "Fallo de comunicacion entre el PC del controlador y la caja RDC (cable X21/X31).",
+      it: "Errore di comunicazione tra il PC e la scheda RDC alla base del robot (cavo X21/X31).",
+      tr: "KPC ile robot tabanındaki RDC kutusu arasında iletisim hatası (X21/X31 kablosu veya 24V besleme).",
+    },
+    remedy: {
+      en: "Check data cable between cabinet and robot base, verify green LED on RDC board, check 24V fuses.",
+      ru: "Проверьте кабель передачи данных между шкафом и базой робота, проверьте светодиоды на плате RDC и предохранители 24В.",
+      de: "Verbindungsleitung zwischen Schrank und Roboter pruefen, LEDs auf RDC-Karte kontrollieren.",
+      es: "Compruebe el cable de datos y los fusibles de 24V en el armario.",
+      it: "Controllare il cavo dati e i fusibili a 24V nel quadro.",
+      tr: "Pano ile robot arasındaki veri kablosunu, RDC kartı LED'lerini ve 24V sigortalarını kontrol edin.",
+    },
+  },
+  {
+    id: 72,
+    text: {
+      en: "RESUME inadmissible for global interrupts",
+      ru: "RESUME недопустим в глобальных прерываниях без сдвига стека",
+      de: "RESUME bei globalen Interrupts unzulaessig",
+      es: "RESUME inadmisible para interrupciones globales",
+      it: "RESUME non ammissibile per interrupt globali",
+      tr: "Global kesmelerde RESUME komutu gecersizdir",
+    },
+    cause: {
+      en: "RESUME was called in an interrupt subroutine declared at program level 0, or subprogram was not called by reference.",
+      ru: "Команда RESUME вызвана в процедуре прерывания, объявленной на нулевом уровне программы (нельзя прервать уровень объявления).",
+      de: "RESUME wurde in einem Interrupt-UP auf Ebene 0 aufgerufen (Abbruch der Deklarationsebene nicht moeglich).",
+      es: "Se llamo a RESUME en una rutina declarada en el nivel principal del programa.",
+      it: "RESUME chiamato in una routine di interrupt al livello principale.",
+      tr: "RESUME komutu 0. seviyede tanımlanmıs bir kesme alt programında calıstırıldı.",
+    },
+    remedy: {
+      en: "Ensure the motion routine is encapsulated in a subprogram called by the main program where INTERRUPT DECL was made.",
+      ru: "Оберните движение в подпрограмму: объявляйте INTERRUPT в главной программе, а само движение выполняйте в дочерней процедуре.",
+      de: "Bewegung in ein Unterprogramm auslagern, das vom Deklarationsprogramm aufgerufen wird.",
+      es: "Encapsule el movimiento en un subprograma llamado desde el nivel donde se declaro la interrupcion.",
+      it: "Includere il movimento in un sottoprogramma richiamato dal programma principale.",
+      tr: "Hareketi alt programa tasıyın: kesmeyi ana programda tanımlayın, hareketi alt programda yapın.",
+    },
+  },
+  {
+    id: 1376,
+    text: {
+      en: "Programmed path velocity exceeded",
+      ru: "Превышена запрограммированная скорость контура ($VEL.CP)",
+      de: "Programmierte Bahngeschwindigkeit ueberschritten",
+      es: "Velocidad de trayectoria programada sobrepasada",
+      it: "Superata la velocita di traiettoria programmata",
+      tr: "Programlanan yol hızı asıldı",
+    },
+    cause: {
+      en: "Robot trajectory attempts Cartesian linear or circular speed higher than axis kinematic motor limits.",
+      ru: "Декартова скорость LIN или CIRC вблизи сингулярности требует от осей робота вращения быстрее их физического предела.",
+      de: "Achsmotoren koennen die geforderte Bahngeschwindigkeit nicht erreichen (Singularitaetsnaehe).",
+      es: "Los ejes del robot no pueden alcanzar la velocidad cartesiana demandada (cercania a singularidad).",
+      it: "I motori degli assi non riescono a seguire la velocita richiesta (prossimita di singolarita).",
+      tr: "Eksen motorları talep edilen Kartezyen yol hızına ulasamıyor (tekillik noktası yakınında).",
+    },
+    remedy: {
+      en: "Reduce $VEL.CP, change orientation angle (A, B, C), or switch from LIN to PTP motion away from wrist singularities.",
+      ru: "Уменьшите $VEL.CP, скорректируйте углы инструмента (A, B, C) или замените LIN на PTP при прохождении через сингулярность руки.",
+      de: "$VEL.CP reduzieren, Orientierung anpassen oder auf PTP-Bewegung wechseln.",
+      es: "Reduzca $VEL.CP o cambie el movimiento a PTP fuera de la singularidad.",
+      it: "Ridurre $VEL.CP o sostituire con movimento PTP lontano dalla singolarita.",
+      tr: "$VEL.CP degerini dusurun veya eksen tekilligi yakınında LIN yerine PTP kullanın.",
+    },
+  },
+  {
+    id: 1422,
+    text: {
+      en: "Axis software limit switch exceeded",
+      ru: "Превышен программный концевой выключатель оси ($SOFTP_END / $SOFTN_END)",
+      de: "Software-Endschalter Achse ueberschritten",
+      es: "Final de carrera por software de eje sobrepasado",
+      it: "Finecorsa software dell'asse superato",
+      tr: "Eksen yazılımsal sınır anahtarı asıldı",
+    },
+    cause: {
+      en: "Target motion point exceeds the maximum allowed angle of axis A1..A6 or external axis E1..E6.",
+      ru: "Конечная точка движения выходит за пределы допустимого диапазона вращения одной из осей робота.",
+      de: "Zielpunkt liegt ausserhalb des zulaessigen Verfahrbereichs der Roboterachse.",
+      es: "El punto de destino esta fuera del rango angular permitido del eje.",
+      it: "Il punto programmato e al di fuori della corsa ammessa per l'asse.",
+      tr: "Hedef nokta robot ekseninin izin verilen acı sınırının dısındadır.",
+    },
+    remedy: {
+      en: "Verify point coordinates in $config.dat / DAT file. In T1 mode, jog axis back inside software limits.",
+      ru: "Проверьте координаты точки в DAT файле. В ручном режиме T1 отведите ось назад внутрь рабочей зоны.",
+      de: "Punktkoordinaten in der DAT-Datei pruefen. In T1 Achse in den zulaessigen Bereich zurueckfahren.",
+      es: "Compruebe las coordenadas en el archivo DAT. En T1 mueva el eje hacia el area de trabajo.",
+      it: "Verificare le coordinate nel file DAT. In T1 riportare l'asse all'interno dei limiti.",
+      tr: "DAT dosyasındaki koordinatları kontrol edin. T1 modunda ekseni sınırların icine geri surun.",
+    },
+  },
+  {
+    id: 2858,
+    text: {
+      en: "Position not reachable (kinematic singularity)",
+      ru: "Позиция кинематически недостижима (сингулярность или выход за рабочую зону)",
+      de: "Position kinematisch nicht erreichbar (Singularitaet)",
+      es: "Posicion no alcanzable cinematicamente (singularidad)",
+      it: "Posizione non raggiungibile cinematicamente (singolarita)",
+      tr: "Pozisyona ulasılamıyor (kinematik tekillik veya erisim dısı)",
+    },
+    cause: {
+      en: "Target Cartesian pose (X, Y, Z, A, B, C) cannot be solved by inverse kinematics (wrist singularity A5 ~ 0 deg or arm extended).",
+      ru: "Обратная кинематическая задача не имеет решения: ось A5 близка к 0° (сингулярность кисти) или рука робота полностью вытянута.",
+      de: "Kartesische Zielpose kann nicht aufgeloest werden (A5 ca. 0 Grad, gestreckter Arm).",
+      es: "La cinemática inversa no tiene solucion (A5 cerca de 0 grados o brazo totalmente extendido).",
+      it: "La cinematica inversa non ha soluzione (A5 vicino a 0 gradi o braccio completamente esteso).",
+      tr: "Ters kinematik cozulemiyor: A5 ekseni 0 dereceye yakın veya kol tamamen uzanmıs durumda.",
+    },
+    remedy: {
+      en: "Jog axis A5 away from 0 deg (+/- 5 deg), modify wrist status/turn bits (S and T), or use PTP motion.",
+      ru: "Сместите ось A5 дальше от 0° (хотя бы на 5°), скорректируйте биты Status и Turn (S и T) или используйте PTP перемещение.",
+      de: "Achse A5 aus der Nulllage verfahren, Status/Turn korrigieren oder PTP verwenden.",
+      es: "Mueva el eje A5 fuera de 0 grados, corrija Status y Turn, o use PTP.",
+      it: "Spostare l'asse A5 da 0 gradi, correggere Status e Turn o usare PTP.",
+      tr: "A5 eksenini 0 dereceden uzaklastırın (+/- 5 derece), Status ve Turn bitlerini duzeltin veya PTP kullanın.",
+    },
+  },
+];
+
+export function lookupKssMessage(id: number | string, locale: Locale = "en"): KssMessageDoc | undefined {
+  const num = Number(id);
+  return KSS_MESSAGES_CATALOG.find((m) => m.id === num);
+}

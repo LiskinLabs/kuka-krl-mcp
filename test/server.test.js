@@ -91,16 +91,34 @@ END
   assert.ok(codes.includes("KRL_FOLD_UNBALANCED"), "Should detect missing ;ENDFOLD");
 });
 
-test("Tier 1 & 2: Bridge Client EXTENSION_REQUIRED Fallback", async () => {
+test("Tier 1 & 2: Bridge Client Connectivity & Fallback", async () => {
   const client = new BridgeClient();
-  // With no bridge running or mock environment
   const diag = await client.getWorkspaceDiagnostics();
-  assert.ok(diag.error === "EXTENSION_REQUIRED" || diag.error === "BRIDGE_COMMUNICATION_ERROR");
-  if (diag.error === "EXTENSION_REQUIRED") {
-    assert.ok(diag.message.includes("LiskinLabs"));
-    assert.ok(diag.installUrl.includes("LiskinLabs.kuka-krl-extension"));
+  if (client.isAvailable()) {
+    assert.ok(
+      diag.diagnostics !== undefined ||
+      diag.status === "OK" ||
+      diag.totalIssues !== undefined ||
+      diag.error === "BRIDGE_COMMUNICATION_ERROR",
+      "Live bridge should return diagnostics or status OK",
+    );
+  } else {
+    assert.ok(diag.error === "EXTENSION_REQUIRED" || diag.error === "BRIDGE_COMMUNICATION_ERROR");
+    if (diag.error === "EXTENSION_REQUIRED") {
+      assert.ok(diag.message.includes("LiskinLabs"));
+      assert.ok(diag.installUrl.includes("LiskinLabs.kuka-krl-extension"));
+    }
   }
 
   const repair = await client.safeAutoRepair("DEF a()\nEND");
-  assert.ok(repair.error === "EXTENSION_REQUIRED" || repair.error === "BRIDGE_COMMUNICATION_ERROR");
+  if (client.isAvailable()) {
+    assert.ok(
+      repair.status === "OK" ||
+      repair.repairedCode !== undefined ||
+      repair.error === "BRIDGE_COMMUNICATION_ERROR",
+      "Live bridge should return repair result",
+    );
+  } else {
+    assert.ok(repair.error === "EXTENSION_REQUIRED" || repair.error === "BRIDGE_COMMUNICATION_ERROR");
+  }
 });

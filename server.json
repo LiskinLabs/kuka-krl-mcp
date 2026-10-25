@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/registry/main/schema/server.json",
+  "name": "kuka-krl-mcp",
+  "title": "KUKA KRL Industrial Robotics MCP Server",
+  "description": "Model Context Protocol (MCP) server for KUKA KRL (KSS 8.3-8.7) robot programming, system variables, error catalog, industrial safety linting, and live controller bridge.",
+  "homepage": "https://github.com/LiskinLabs/kuka-krl-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LiskinLabs/kuka-krl-mcp"
+  },
+  "license": "MIT",
+  "keywords": [
+    "kuka",
+    "krl",
+    "robotics",
+    "krc4",
+    "krc5",
+    "kss",
+    "industrial-automation",
+    "safety",
+    "mcp"
+  ],
+  "transport": {
+    "type": "stdio"
+  }
+}

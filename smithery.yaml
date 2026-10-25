@@ -1,0 +1,23 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      kukaKrlBridgePort:
+        type: string
+        title: "KUKA KRL Extension Bridge Port"
+        description: "Optional local port of KUKA KRL extension bridge (auto-discovered if omitted)"
+      kukaKrlBridgeToken:
+        type: string
+        title: "KUKA KRL Extension Bridge Token"
+        description: "Optional authentication token for the local extension bridge"
+  commandFunction: |-
+    (config) => ({
+      command: "node",
+      args: ["dist/index.js"],
+      env: {
+        ...(config?.kukaKrlBridgePort ? { KUKA_KRL_BRIDGE_PORT: String(config.kukaKrlBridgePort) } : {}),
+        ...(config?.kukaKrlBridgeToken ? { KUKA_KRL_BRIDGE_TOKEN: String(config.kukaKrlBridgeToken) } : {})
+      }
+    })

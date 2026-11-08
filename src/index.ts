@@ -24,7 +24,7 @@ const bridge = new BridgeClient();
 
 const server = new McpServer({
   name: "kuka-krl-mcp",
-  version: "1.0.0",
+  version: "1.1.0",
 });
 
 function ok(data: unknown) {

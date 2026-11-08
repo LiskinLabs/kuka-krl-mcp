@@ -23,6 +23,14 @@ test("Tier 0: System Variables DB Lookup", () => {
   assert.strictEqual(ovPro.type, "INT");
   assert.strictEqual(ovPro.range, "0 .. 100");
 
+  const modeOp = lookupSystemVar("$MODE_OP", "ru");
+  assert.ok(modeOp, "$MODE_OP should exist");
+  assert.ok(modeOp.description.ru.includes("SmartPAD"));
+
+  const pgno = lookupSystemVar("pgno", "en");
+  assert.ok(pgno, "$PGNO should exist");
+  assert.strictEqual(pgno.type, "INT");
+
   const nonExistent = lookupSystemVar("$UNKNOWN_VAR_123");
   assert.strictEqual(nonExistent, undefined);
 });
@@ -37,6 +45,14 @@ test("Tier 0: KSS Messages Catalog Lookup", () => {
   assert.ok(msg67Ru);
   assert.ok(msg67Ru.text.ru.includes("безопасность оператора"));
   assert.ok(msg67Ru.remedy.ru.includes("SmartPAD"));
+
+  const msg1377 = lookupKssMessage(1377, "en");
+  assert.ok(msg1377, "Collision message 1377 should exist");
+  assert.ok(msg1377.text.en.includes("Collision"));
+
+  const msg1444Ru = lookupKssMessage(1444, "ru");
+  assert.ok(msg1444Ru, "Mastering message 1444 should exist");
+  assert.ok(msg1444Ru.text.ru.includes("юстировка"));
 
   const nonExistent = lookupKssMessage(999999);
   assert.strictEqual(nonExistent, undefined);

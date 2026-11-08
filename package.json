@@ -1,6 +1,6 @@
 {
   "name": "kuka-krl-mcp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Model Context Protocol (MCP) server for KUKA KRL (KSS 8.3-8.7) robot programming, industrial safety linting, system variables, error catalog, and live controller bridge.",
   "type": "module",
   "main": "dist/index.js",
